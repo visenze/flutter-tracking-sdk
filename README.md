@@ -8,7 +8,7 @@
 ## Overview
 Visenze Analytics is a key part of your analytics solutions, allowing you to track key events and view the resulting analytics and performance data. 
 
-The ViSenze Tracking SDK is an open source software for easy integration of ViSearch Tracking API with your javascript application. For source code and references, visit the [GitHub repository](https://github.com/visenze/flutter-tracking-sdk).
+The ViSenze Tracking SDK is an open source software for easy integration of ViSearch Tracking API with your flutter application. For source code and references, visit the [GitHub repository](https://github.com/visenze/flutter-tracking-sdk).
 
 ## Usage
 
