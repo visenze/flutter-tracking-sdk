@@ -1,7 +1,7 @@
 library visenze_tracking_sdk;
 
-import 'package:visenze_tracking_sdk/data_collection.dart';
-import 'package:visenze_tracking_sdk/session_manager.dart';
+import 'package:visenze_tracking_sdk/src/data_collection.dart';
+import 'package:visenze_tracking_sdk/src/session_manager.dart';
 import 'package:http/http.dart' as http;
 
 class VisenzeTracker {
@@ -14,7 +14,8 @@ class VisenzeTracker {
   late final SessionManager _sessionManager;
   late final DataCollection _deviceData;
 
-  // factory for creating Tracker
+  /// Factory for creating [VisenzeTracker]
+  /// If [uid] is provided, set tracker user id to [uid]
   static Future<VisenzeTracker> create(code,
       {String? uid, bool? useStaging}) async {
     var tracker = VisenzeTracker._create(code, useStaging);
@@ -22,14 +23,22 @@ class VisenzeTracker {
     return tracker;
   }
 
+  /// Get the current session id
   String getSessionId() {
     return _sessionManager.getSessionId();
   }
 
+  /// Get the current user id
   String getUserId() {
     return _sessionManager.getUserId();
   }
 
+  /// Set the current user id to the provided [uid]
+  void setUserId(String uid) {
+    return _sessionManager.setUserId(uid);
+  }
+
+  /// Send a request to ViSenze analytics server with provided [queryParams]
   void send(Map<String, dynamic> queryParams) async {
     var trackingData = await _getTrackerParams();
     trackingData.addAll(queryParams);

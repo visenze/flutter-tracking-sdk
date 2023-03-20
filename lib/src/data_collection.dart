@@ -11,6 +11,7 @@ class DataCollection {
   static const String _sdk = 'flutter_sdk';
   final DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
 
+  /// Get platform data
   Future<Map<String, dynamic>> readDeviceData() async {
     var deviceData = <String, dynamic>{};
 

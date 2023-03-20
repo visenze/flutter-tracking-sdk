@@ -15,13 +15,15 @@ class SessionManager {
   String _sid = '';
   int _sessionTimestamp = 0;
 
-  // factory for creating session
+  /// Factory for creating [SessionManager]
   static Future<SessionManager> create([String? uid]) async {
     var session = SessionManager();
     await session._init(uid);
     return session;
   }
 
+  /// Get the current session id
+  /// Return a new session if the session id has expired
   String getSessionId() {
     int now = clock.now().millisecondsSinceEpoch;
     if (_isSessionExpired(now)) {
@@ -30,13 +32,19 @@ class SessionManager {
     // getSessionId is called means session is still active
     // update timestamp
     _sessionTimestamp = now;
-
     _saveSession();
     return _sid;
   }
 
+  /// Get the current user id
   String getUserId() {
     return _uid;
+  }
+
+  /// Set user id to provided [uid]
+  void setUserId(String uid) {
+    _uid = uid;
+    _prefs.setString(_keyUID, _uid);
   }
 
   _init(String? uid) async {
