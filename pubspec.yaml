@@ -7,7 +7,7 @@ documentation: https://github.com/visenze/flutter-tracking-sdk/
 issue_tracker: https://github.com/visenze/flutter-tracking-sdk/issues
 
 environment:
-  sdk: '>=2.19.4 <3.0.0'
+  sdk: '>=2.19.0 <3.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
