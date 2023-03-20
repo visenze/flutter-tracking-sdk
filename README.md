@@ -12,10 +12,22 @@ The ViSenze Tracking SDK is an open source software for easy integration of ViSe
 
 ## Usage
 
+### Initialize
 ```dart
 import 'package:visenze_tracking_sdk/visenze_tracker.dart';
 
 void main() {
   var tracker = await VisenzeTracker.create('MY_APP_KEY:MY_PLACEMENT_ID');
 }
+```
+
+### Getting tracking data
+```dart
+String uid = tracker.getUserId();
+String sid = tracker.getSessionsId();
+```
+
+### Sending events
+```dart
+tracker.send({'action': 'product_view', 'pid': '1'});
 ```
