@@ -1,6 +1,6 @@
 name: visenze_tracking_sdk
 description: Flutter plugin for tracking for ViSenze console users. Created for Flutter iOS, Android and Web apps.
-version: 0.0.1
+version: 0.0.2
 homepage: https://visenze.com
 
 environment:
