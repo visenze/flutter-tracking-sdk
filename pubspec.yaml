@@ -1,7 +1,7 @@
 name: visenze_tracking_sdk
 description: Flutter package for tracking for ViSenze clients
 version: 0.0.1
-homepage:
+homepage: https://visenze.com
 
 environment:
   sdk: '>=2.19.4 <3.0.0'
@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.5
-  shared_preferences: ">=2.0.18"
+  shared_preferences: "^2.0.18"
   uuid: ^3.0.6
   device_info_plus: ^8.1.0
   package_info_plus: ^3.0.3
