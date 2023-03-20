@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  # Run on PRs and pushes to the default branch.
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+env:
+  PUB_ENVIRONMENT: bot.github
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - id: install Flutter
+        uses: subosito/flutter-action@v2
+          with:
+            flutter-version: "3.0.0"
+            channel: 'stable'
+      - id: install
+        name: Install dependencies
+        run: flutter pub get
+      - name: test
+        run: flutter test
