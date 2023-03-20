@@ -15,13 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - id: install Flutter
+      - name: Install Flutter
         uses: subosito/flutter-action@v2
-          with:
-            flutter-version: "3.0.0"
-            channel: 'stable'
-      - id: install
-        name: Install dependencies
+        with:
+          flutter-version: "3.0.0"
+          channel: 'stable'
+      - name: Install dependencies
         run: flutter pub get
       - name: test
         run: flutter test
