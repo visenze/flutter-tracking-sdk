@@ -38,12 +38,13 @@ class VisenzeTracker {
     return _sessionManager.setUserId(uid);
   }
 
-  /// Send a request to ViSenze analytics server with provided [queryParams]
-  void send(Map<String, dynamic> queryParams) async {
+  /// Send a request to ViSenze analytics server with event name [action] and provided [queryParams]
+  void sendEvent(String action, Map<String, dynamic> queryParams) async {
     var trackingData = await _getTrackerParams();
     trackingData.addAll(queryParams);
     trackingData =
         trackingData.map((key, value) => MapEntry(key, value.toString()));
+    trackingData['action'] = action;
     Uri url = Uri.https(
         _useStaging ? _stagingEndpoint : _endpoint, _path, trackingData);
     http.get(url);
