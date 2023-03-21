@@ -2,13 +2,12 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class DataCollection {
   static const String _sdk = 'flutter_sdk';
+  static const String _version = '0.0.3';
   final DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
 
   /// Get platform data
@@ -45,19 +44,12 @@ class DataCollection {
   }
 
   Future<Map<String, dynamic>> _getCommonData() async {
-    String version = await _getPackageVersion();
     return {
       'sdk': _sdk,
-      'v': version,
+      'v': _version,
       'lang': _getLanguage(),
       'sr': _getScreenResolution(),
     };
-  }
-
-  Future<String> _getPackageVersion() async {
-    WidgetsFlutterBinding.ensureInitialized();
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    return packageInfo.buildNumber;
   }
 
   // Get width and height of the device's screen in physical pixels
