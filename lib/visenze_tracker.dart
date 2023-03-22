@@ -16,6 +16,7 @@ class VisenzeTracker {
   late final DataCollection _deviceData;
 
   /// Factory for creating [VisenzeTracker]
+  ///
   /// If [uid] is provided, set tracker user id to [uid]
   static Future<VisenzeTracker> create(code,
       {String? uid, bool? useStaging}) async {
@@ -40,6 +41,7 @@ class VisenzeTracker {
   }
 
   /// Send a request to ViSenze analytics server with event name [action] and provided [queryParams]
+  ///
   /// Execute [onSuccess] on request success and [onError] on request error
   Future<void> sendEvent(String action, Map<String, dynamic> queryParams,
       {void Function()? onSuccess, void Function(String err)? onError}) async {
