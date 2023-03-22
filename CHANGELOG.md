@@ -12,4 +12,4 @@
 
 ## 0.0.4
 
-* Updare documenation
+* Update documenation
