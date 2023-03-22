@@ -20,7 +20,7 @@ class MyAppState extends State<MyApp> {
     initTracker();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
+  // Factory is asynchronous, so we put it in an async method.
   Future<void> initTracker() async {
     tracker = await VisenzeTracker.create('APP_KEY:PLACEMENT_ID');
 
