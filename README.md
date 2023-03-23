@@ -21,10 +21,15 @@ Future<void> init() async {
 }
 ```
 
+### Setting user id
+```dart
+tracker.userId = 'MY_UID'
+```
+
 ### Getting tracking data
 ```dart
-String uid = tracker.getUserId();
-String sid = tracker.getSessionsId();
+String uid = tracker.userId;
+String sid = tracker.sessionId;
 ```
 
 ### Sending events

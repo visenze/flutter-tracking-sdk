@@ -26,18 +26,18 @@ class VisenzeTracker {
   }
 
   /// Get the current session id
-  String getSessionId() {
-    return _sessionManager.getSessionId();
+  String get sessionId {
+    return _sessionManager.sessionId;
   }
 
   /// Get the current user id
-  String getUserId() {
-    return _sessionManager.getUserId();
+  String get userId {
+    return _sessionManager.userId;
   }
 
   /// Set the current user id to the provided [uid]
-  void setUserId(String uid) {
-    return _sessionManager.setUserId(uid);
+  set userId(String uid) {
+    _sessionManager.userId = uid;
   }
 
   /// Send a request to ViSenze analytics server with event name [action] and provided [queryParams]
@@ -71,8 +71,8 @@ class VisenzeTracker {
       String action, Map<String, dynamic> queryParams) async {
     Map<String, dynamic> data = await _deviceData.readDeviceData();
     data['code'] = _code;
-    data['sid'] = _sessionManager.getSessionId();
-    data['uid'] = _sessionManager.getUserId();
+    data['sid'] = _sessionManager.sessionId;
+    data['uid'] = _sessionManager.userId;
     data['ts'] = DateTime.now().millisecondsSinceEpoch;
     data['action'] = action;
     data.addAll(queryParams);
