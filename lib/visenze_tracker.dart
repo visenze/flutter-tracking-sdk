@@ -10,10 +10,10 @@ class VisenzeTracker {
   static const String _stagingEndpoint = 'staging-analytics.data.visenze.com';
   static const String _path = 'v3/__va.gif';
 
-  bool _useStaging = false;
   final String _code;
   late final SessionManager _sessionManager;
   late final DataCollection _deviceData;
+  late final bool _useStaging;
 
   /// Factory for creating [VisenzeTracker]
   ///
