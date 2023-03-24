@@ -9,7 +9,3 @@
 ## 0.0.3
 
 * Add example and update API
-
-## 0.0.4
-
-* Update documenation
