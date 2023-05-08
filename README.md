@@ -6,13 +6,15 @@
 [![Null Safety](https://img.shields.io/badge/-Null%20Safety-blue.svg)]()
 
 ## Overview
-Visenze Analytics is a key part of your analytics solutions, allowing you to track key events and view the resulting analytics and performance data. 
+
+Visenze Analytics is a key part of your analytics solutions, allowing you to track key events and view the resulting analytics and performance data.
 
 The ViSenze Tracking SDK is an open source software for easy integration of ViSearch Tracking API with your flutter application. For source code and references, visit the [GitHub repository](https://github.com/visenze/flutter-tracking-sdk).
 
 ## Usage
 
 ### Initialize
+
 ```dart
 import 'package:visenze_tracking_sdk/visenze_tracker.dart';
 
@@ -22,17 +24,36 @@ Future<void> init() async {
 ```
 
 ### Setting user id
+
 ```dart
 tracker.userId = 'MY_UID'
 ```
 
 ### Getting tracking data
+
 ```dart
 String uid = tracker.userId;
 String sid = tracker.sessionId;
 ```
 
 ### Sending events
+
 ```dart
-tracker.send({'action': 'product_view', 'pid': '1'});
+tracker.send('product_view', {'queryId': '1234', 'pid': 'Product Id'});
+```
+
+With callbacks
+
+```dart
+tracker.send('product_click', {'queryId': '1234', 'pid': 'Test pid'}, onSuccess: onRequestSuccess, onError: onRequestError);
+```
+
+### Sending batch events
+
+```dart
+const transactions = [
+  {'queryId': '1234', 'pid': 'Pid 1', 'value': 50},
+  {'queryId': '1234', 'pid': 'Pid 2', 'value': 100}
+];
+tracker.sendEvents('transactions', transactions);
 ```
