@@ -7,13 +7,14 @@ documentation: https://github.com/visenze/flutter-tracking-sdk/
 issue_tracker: https://github.com/visenze/flutter-tracking-sdk/issues
 
 environment:
-  sdk: '>=2.19.4 <3.0.0'
+  sdk: ">=2.19.4 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.5
+  universal_io: ^2.2.0
   shared_preferences: "^2.0.18"
   uuid: ^3.0.6
   device_info_plus: ^8.1.0
@@ -24,6 +25,5 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.0
   fake_async: ^1.3.1
-
 
 flutter:
