@@ -58,6 +58,17 @@ class VisenzeTracker {
     }
   }
 
+  /// Send batch request to ViSenze analytics server with event name [action] and params list [queryParamsList]
+  ///
+  /// Execute [onSuccess] on each request success and [onError] on each request error
+  Future<void> sendEvents(
+      String action, List<Map<String, dynamic>> queryParamsList,
+      {void Function()? onSuccess, void Function(String err)? onError}) async {
+    for (final params in queryParamsList) {
+      sendEvent(action, params, onSuccess: onSuccess, onError: onError);
+    }
+  }
+
   VisenzeTracker._create(this._code, [bool? useStaging]) {
     _deviceData = DataCollection();
     _useStaging = useStaging ?? false;
