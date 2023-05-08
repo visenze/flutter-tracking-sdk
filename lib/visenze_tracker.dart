@@ -10,10 +10,10 @@ class VisenzeTracker {
   static const String _stagingEndpoint = 'staging-analytics.data.visenze.com';
   static const String _path = 'v3/__va.gif';
 
-  bool _useStaging = false;
   final String _code;
   late final SessionManager _sessionManager;
   late final DataCollection _deviceData;
+  late final bool _useStaging;
 
   /// Factory for creating [VisenzeTracker]
   ///
@@ -26,18 +26,18 @@ class VisenzeTracker {
   }
 
   /// Get the current session id
-  String getSessionId() {
-    return _sessionManager.getSessionId();
+  String get sessionId {
+    return _sessionManager.sessionId;
   }
 
   /// Get the current user id
-  String getUserId() {
-    return _sessionManager.getUserId();
+  String get userId {
+    return _sessionManager.userId;
   }
 
   /// Set the current user id to the provided [uid]
-  void setUserId(String uid) {
-    return _sessionManager.setUserId(uid);
+  set userId(String uid) {
+    _sessionManager.userId = uid;
   }
 
   /// Send a request to ViSenze analytics server with event name [action] and provided [queryParams]
@@ -58,6 +58,17 @@ class VisenzeTracker {
     }
   }
 
+  /// Send batch request to ViSenze analytics server with event name [action] and params list [queryParamsList]
+  ///
+  /// Execute [onSuccess] on each request success and [onError] on each request error
+  Future<void> sendEvents(
+      String action, List<Map<String, dynamic>> queryParamsList,
+      {void Function()? onSuccess, void Function(String err)? onError}) async {
+    for (final params in queryParamsList) {
+      sendEvent(action, params, onSuccess: onSuccess, onError: onError);
+    }
+  }
+
   VisenzeTracker._create(this._code, [bool? useStaging]) {
     _deviceData = DataCollection();
     _useStaging = useStaging ?? false;
@@ -71,8 +82,8 @@ class VisenzeTracker {
       String action, Map<String, dynamic> queryParams) async {
     Map<String, dynamic> data = await _deviceData.readDeviceData();
     data['code'] = _code;
-    data['sid'] = _sessionManager.getSessionId();
-    data['uid'] = _sessionManager.getUserId();
+    data['sid'] = _sessionManager.sessionId;
+    data['uid'] = _sessionManager.userId;
     data['ts'] = DateTime.now().millisecondsSinceEpoch;
     data['action'] = action;
     data.addAll(queryParams);

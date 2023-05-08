@@ -25,8 +25,8 @@ class MyAppState extends State<MyApp> {
     tracker = await VisenzeTracker.create('APP_KEY:PLACEMENT_ID');
 
     setState(() {
-      _trackerSid = tracker.getSessionId();
-      _trackerUid = tracker.getUserId();
+      _trackerSid = tracker.sessionId;
+      _trackerUid = tracker.userId;
     });
   }
 

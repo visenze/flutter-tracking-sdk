@@ -24,7 +24,7 @@ class SessionManager {
 
   /// Get the current session id
   /// Return a new session if the session id has expired
-  String getSessionId() {
+  String get sessionId {
     int now = clock.now().millisecondsSinceEpoch;
     if (_isSessionExpired(now)) {
       _sid = _uuid.v4().toString().replaceAll('-', '.');
@@ -37,12 +37,12 @@ class SessionManager {
   }
 
   /// Get the current user id
-  String getUserId() {
+  String get userId {
     return _uid;
   }
 
   /// Set user id to provided [uid]
-  void setUserId(String uid) {
+  set userId(String uid) {
     _uid = uid;
     _prefs.setString(_keyUID, _uid);
   }
