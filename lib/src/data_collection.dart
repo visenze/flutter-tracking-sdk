@@ -1,13 +1,12 @@
-import 'dart:io';
 import 'dart:ui';
-
+import 'package:universal_io/io.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 class DataCollection {
   static const String _sdk = 'flutter_sdk';
-  static const String _version = '0.0.3';
+  static const String _version = '0.0.4-dev.1';
   final DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
 
   /// Get platform data
