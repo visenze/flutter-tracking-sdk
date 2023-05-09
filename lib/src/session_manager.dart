@@ -27,7 +27,7 @@ class SessionManager {
   String get sessionId {
     int now = clock.now().millisecondsSinceEpoch;
     if (_isSessionExpired(now)) {
-      _sid = _uuid.v4().toString().replaceAll('-', '.');
+      _sid = generateUUID();
     }
     // getSessionId is called means session is still active
     // update timestamp
@@ -47,6 +47,29 @@ class SessionManager {
     _prefs.setString(_keyUID, _uid);
   }
 
+  int get sessionTimeRemaining {
+    int now = clock.now().millisecondsSinceEpoch;
+    var timestamp = _prefs.getInt(_keySIDTimestamp);
+    if (timestamp == null) {
+      return 0;
+    }
+    if (!_isSameDay(now, timestamp) || (now - timestamp) > _sessionTimeout) {
+      return 0;
+    }
+    return _sessionTimeout - (now - timestamp);
+  }
+
+  String resetSession() {
+    _prefs.remove(_keySID);
+    _prefs.remove(_keySIDTimestamp);
+    _sessionTimestamp = 0;
+    return sessionId;
+  }
+
+  String generateUUID() {
+    return _uuid.v4().toString().replaceAll('-', '.');
+  }
+
   _init(String? uid) async {
     _prefs = await SharedPreferences.getInstance();
     _initUID(uid);
@@ -59,7 +82,7 @@ class SessionManager {
     } else {
       _uid = _prefs.getString(_keyUID) ?? '';
       if (_uid.isEmpty) {
-        _uid = _uuid.v4().toString().replaceAll('-', '.');
+        _uid = generateUUID();
       }
     }
     _prefs.setString(_keyUID, _uid);

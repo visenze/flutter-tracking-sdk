@@ -42,12 +42,6 @@ String sid = tracker.sessionId;
 tracker.send('product_view', {'queryId': '1234', 'pid': 'Product Id'});
 ```
 
-With callbacks
-
-```dart
-tracker.send('product_click', {'queryId': '1234', 'pid': 'Test pid'}, onSuccess: onRequestSuccess, onError: onRequestError);
-```
-
 ### Sending batch events
 
 ```dart
