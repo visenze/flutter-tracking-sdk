@@ -67,8 +67,10 @@ class VisenzeTracker {
     final batchId = _sessionManager.generateUUID();
     final List<Future> futures = [];
     for (final params in queryParamsList) {
-      if (params['transId'] == null || params['transId'] == '') {
-        params['transId'] = batchId;
+      if (action == 'transaction') {
+        if (params['transId'] == null || params['transId'] == '') {
+          params['transId'] = batchId;
+        }
       }
       futures.add(sendEvent(action, params));
     }
