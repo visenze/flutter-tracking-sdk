@@ -40,6 +40,16 @@ class VisenzeTracker {
     _sessionManager.userId = uid;
   }
 
+  /// Return remaining time for session
+  int get sessionTimeRemaining {
+    return _sessionManager.sessionTimeRemaining;
+  }
+
+  /// Reset the current session and return the new sessionId
+  String resetSession() {
+    return _sessionManager.resetSession();
+  }
+
   /// Send a request to ViSenze analytics server with event name [action] and provided [queryParams]
   ///
   /// Execute [onSuccess] on request success and [onError] on request error

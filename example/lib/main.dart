@@ -55,6 +55,13 @@ class MyAppState extends State<MyApp> {
         onSuccess: onRequestSuccess, onError: onRequestError);
   }
 
+  Future<void> resetSession() async {
+    tracker.resetSession();
+    setState(() {
+      _trackerSid = tracker.sessionId;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -70,6 +77,10 @@ class MyAppState extends State<MyApp> {
                   children: <Widget>[
                     Text('Session Id: $_trackerSid'),
                     Text('User Id: $_trackerUid'),
+                    const Padding(padding: EdgeInsets.all(4)),
+                    TextButton(
+                        onPressed: resetSession,
+                        child: const Text('Reset session')),
                     const Padding(padding: EdgeInsets.all(4)),
                     TextField(
                       decoration: const InputDecoration(
