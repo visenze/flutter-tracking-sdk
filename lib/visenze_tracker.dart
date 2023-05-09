@@ -64,8 +64,12 @@ class VisenzeTracker {
   /// Send batch request to ViSenze analytics server with event name [action] and params list [queryParamsList]
   Future<void> sendEvents(
       String action, List<Map<String, dynamic>> queryParamsList) async {
+    final batchId = _sessionManager.generateUUID();
     final List<Future> futures = [];
     for (final params in queryParamsList) {
+      if (params['transId'] == null || params['transId'] == '') {
+        params['transId'] = batchId;
+      }
       futures.add(sendEvent(action, params));
     }
     await Future.wait(futures);
