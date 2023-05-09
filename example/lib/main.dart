@@ -44,15 +44,20 @@ class MyAppState extends State<MyApp> {
     });
   }
 
-  void onRequestError(String err) {
+  void onRequestError(dynamic err) {
     setState(() {
       _requestResult = 'Request fail: $err';
     });
   }
 
   Future<void> sendEvent() async {
-    tracker.sendEvent(_eventController.text, jsonDecode(_paramsController.text),
-        onSuccess: onRequestSuccess, onError: onRequestError);
+    try {
+      await tracker.sendEvent(
+          _eventController.text, jsonDecode(_paramsController.text));
+      onRequestSuccess();
+    } catch (err) {
+      onRequestError(err);
+    }
   }
 
   Future<void> resetSession() async {
