@@ -64,9 +64,11 @@ class VisenzeTracker {
   /// Send batch request to ViSenze analytics server with event name [action] and params list [queryParamsList]
   Future<void> sendEvents(
       String action, List<Map<String, dynamic>> queryParamsList) async {
+    final List<Future> futures = [];
     for (final params in queryParamsList) {
-      sendEvent(action, params);
+      futures.add(sendEvent(action, params));
     }
+    await Future.wait(futures);
   }
 
   VisenzeTracker._create(this._code, [bool? useStaging]) {
