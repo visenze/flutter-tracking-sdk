@@ -30,12 +30,11 @@ void main() {
       expect(tracker2.sessionId, equals(savedSid));
     });
 
-    test('resets after timeout', () {
-      fakeAsync((fakeTime) async {
-        var tracker = await VisenzeTracker.create(mockCode);
-        fakeTime.elapse(const Duration(milliseconds: 100));
-        String savedSid = tracker.sessionId;
+    test('resets after timeout', () async {
+      var tracker = await VisenzeTracker.create(mockCode);
+      String savedSid = tracker.sessionId;
 
+      fakeAsync((fakeTime) async {
         fakeTime.elapse(const Duration(milliseconds: 1800000));
         expect(tracker.sessionId, isNot(savedSid));
       });
