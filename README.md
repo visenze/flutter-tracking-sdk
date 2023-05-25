@@ -38,11 +38,68 @@ String sid = tracker.sessionId;
 
 ### Sending events
 
+All events sent to Visenze Analytics server require the search query ID (the reqid) found in the search results response as part of the request parameter.
+
+Some events (for e.g. `product_click` or `product_view`) can require additional parameter like `pid` (product id).
+
+#### Single events
+
+User action can be sent through an event handler. Register an event handler to the element in which the user will interact.
+
 ```dart
-tracker.send('product_view', {'queryId': '1234', 'pid': 'Product Id'});
+// send product click
+tracker.sendEvent('product_click', {
+  'queryId': '<search reqid>',
+  'pid': '<your product id>', // necessary for product_click event
+  'pos': 1, // product position in Search Results, start from 1
+});
+
+// send product impression
+tracker.sendEvent('product_view', {
+  'queryId': '<search reqid>',
+  'pid': '<your product id>', // necessary for product_view event
+  'pos': 1, // product position in Search Results, start from 1
+});
+
+// send Transaction event e.g order purchase of $300
+tracker.sendEvent('transaction', {
+  'queryId': "<search reqid>",
+  'transId': "<your transaction ID>"
+  'value': 300
+});
+
+// send Add to Cart Event
+tracker.sendEvent('add_to_cart', {
+  'queryId': '<search reqid>',
+  'pid': '<your product id>',
+  'pos': 1, // product position in Search Results, start from 1
+});
+
+// send custom event
+tracker.sendEvent('favourite', {
+  'queryId': '<search reqid>',
+  'pid': 'custom event label',
+  'cat': '<product category>'
+});
+
+// handle success or error
+try {
+  await tracker.sendEvent('product_view', {
+    'queryId': '1234',
+    'pid': 'Product Id',
+    'pos': 1
+  });
+  onRequestSuccess() // handle success case
+} catch (errResponse) {
+  onRequestError(errResponse) // handle error case
+}
 ```
 
-### Sending batch events
+#### Batch events
+
+Batch actions can be sent through a batch event handler.
+
+A common use case for this batch event method is to group up all transaction by sending it in a batch. This SDK will automatically generate a transId to group transactions as an order.
 
 ```dart
 const transactions = [
