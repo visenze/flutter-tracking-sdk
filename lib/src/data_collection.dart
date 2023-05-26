@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 
 class DataCollection {
   static const String _sdk = 'flutter_sdk';
-  static const String _version = '0.0.4-dev.1';
+  static const String _version = '0.0.4';
   final DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
 
   /// Get platform data

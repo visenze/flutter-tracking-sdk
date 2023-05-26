@@ -1,11 +1,15 @@
 ## 0.0.1
 
-* Initial push.
+- Initial push.
 
 ## 0.0.2
 
-* Update README
+- Update README
 
 ## 0.0.3
 
-* Add example and update API
+- Add example and update API
+
+## 0.0.4
+
+- Update README
