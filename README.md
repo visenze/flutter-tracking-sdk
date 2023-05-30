@@ -11,8 +11,8 @@
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Usage](#usage)
-    - [Install](#install)
-    - [Initialize](#initialize)
+    - [Installing](#installing)
+    - [Importing](#importing)
     - [Setting user is](#setting-user-id)
     - [Getting tracking data](#getting-tracking-data)
     - [Sending events](#sending-events)
@@ -26,7 +26,7 @@ The ViSenze Tracking SDK is an open source software for easy integration of ViSe
 
 ## Usage
 
-### Install
+### Installing
 
 Run this command
 
@@ -34,7 +34,7 @@ Run this command
 flutter pub add visenze_tracking_sdk
 ```
 
-### Initialize
+### Importing
 
 ```dart
 import 'package:visenze_tracking_sdk/visenze_tracker.dart';
