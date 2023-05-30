@@ -17,6 +17,7 @@
     - [Getting tracking data](#getting-tracking-data)
     - [Sending events](#sending-events)
   - [Event parameters](#event-parameters)
+  - [Example](#example)
 
 ## Overview
 
@@ -133,3 +134,7 @@ tracker.sendEvents('transactions', transactions);
 ### Event parameters
 
 For the detailed list of event parameters, please refer to this [doc](https://ref-docs.visenze.com/reference/event-parameters).
+
+## Example
+
+[Example](https://pub.dev/packages/visenze_tracking_sdk/example)
