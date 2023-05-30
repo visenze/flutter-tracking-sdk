@@ -5,6 +5,19 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](/LICENSE)
 [![Null Safety](https://img.shields.io/badge/-Null%20Safety-blue.svg)]()
 
+## Table of Contents
+
+- [visenze-tracking-javascript](#visenze-tracking-javascript)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Usage](#usage)
+    - [Install](#install)
+    - [Initialize](#initialize)
+    - [Setting user is](#setting-user-id)
+    - [Getting tracking data](#getting-tracking-data)
+    - [Sending events](#sending-events)
+  - [Event parameters](#event-parameters)
+
 ## Overview
 
 Visenze Analytics is a key part of your analytics solutions, allowing you to track key events and view the resulting analytics and performance data.
@@ -12,6 +25,14 @@ Visenze Analytics is a key part of your analytics solutions, allowing you to tra
 The ViSenze Tracking SDK is an open source software for easy integration of ViSearch Tracking API with your flutter application. For source code and references, visit the [GitHub repository](https://github.com/visenze/flutter-tracking-sdk).
 
 ## Usage
+
+### Install
+
+Run this command
+
+```
+flutter pub add visenze_tracking_sdk
+```
 
 ### Initialize
 
@@ -108,3 +129,7 @@ const transactions = [
 ];
 tracker.sendEvents('transactions', transactions);
 ```
+
+### Event parameters
+
+For the detailed list of event parameters, please refer to this [doc](https://ref-docs.visenze.com/reference/event-parameters).
