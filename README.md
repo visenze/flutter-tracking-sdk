@@ -47,7 +47,7 @@ Future<void> init() async {
 
 ### Setting user id
 
-The uid (user identifier) drives features like a/b testing and personalization. By default, we generate a uid based on the user's browser/device information. However, for improved data synchronization with your internal records, you can set your own uid. By incorporating your own uid, you enhance data integration and alignment with your systems. This flexibility enables seamless tracking and analysis, maximizing the benefits of our platform within your existing infrastructure.
+The uid (user identifier) drives features like a/b testing and personalization. By default, we generate an uid based on the user's browser/device information. However, for improved data synchronization with your internal records, you can set your own uid. By incorporating your own uid, you enhance data integration and alignment with your systems. This flexibility enables seamless tracking and analysis, maximizing the benefits of our platform within your existing infrastructure.
 
 To set your own UID, use this code:
 ```dart
