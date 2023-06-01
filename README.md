@@ -47,11 +47,15 @@ Future<void> init() async {
 
 ### Setting user id
 
+The uid (user identifier) drives features like a/b testing and personalization. By default, we generate a uid based on the user's browser/device information. However, for improved data synchronization with your internal records, you can set your own uid. By incorporating your own uid, you enhance data integration and alignment with your systems. This flexibility enables seamless tracking and analysis, maximizing the benefits of our platform within your existing infrastructure.
+
+To set your own UID, use this code:
 ```dart
-tracker.userId = 'MY_UID'
+tracker.userId = 'MY_UID';
 ```
 
 ### Getting tracking data
+You also have the option to retrieve the automatically generated user id and session id. To obtain the user id and session id, you can use the following code:
 
 ```dart
 String uid = tracker.userId;
