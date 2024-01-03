@@ -13,3 +13,7 @@
 ## 0.0.4
 
 - Update README
+
+## 1.0.0
+
+- Update http and sdk version
