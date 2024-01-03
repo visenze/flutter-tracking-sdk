@@ -26,7 +26,7 @@ pipeline {
                 sh('flutter pub get')
                 sh('gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS')
                 sh('gcloud auth print-identity-token --audiences=https://pub.dev | dart pub token add https://pub.dev')
-                sh('dart pub publish --force")
+                sh('dart pub publish --force')
               }       
             }
           }
