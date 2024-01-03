@@ -5,6 +5,20 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](/LICENSE)
 [![Null Safety](https://img.shields.io/badge/-Null%20Safety-blue.svg)]()
 
+## Table of Contents
+
+- [visenze-tracking-javascript](#visenze-tracking-javascript)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Usage](#usage)
+    - [Installing](#installing)
+    - [Importing](#importing)
+    - [Setting user is](#setting-user-id)
+    - [Getting tracking data](#getting-tracking-data)
+    - [Sending events](#sending-events)
+  - [Event parameters](#event-parameters)
+  - [Example](#example)
+
 ## Overview
 
 Visenze Analytics is a key part of your analytics solutions, allowing you to track key events and view the resulting analytics and performance data.
@@ -13,7 +27,15 @@ The ViSenze Tracking SDK is an open source software for easy integration of ViSe
 
 ## Usage
 
-### Initialize
+### Installing
+
+Run this command
+
+```
+flutter pub add visenze_tracking_sdk
+```
+
+### Importing
 
 ```dart
 import 'package:visenze_tracking_sdk/visenze_tracker.dart';
@@ -25,11 +47,15 @@ Future<void> init() async {
 
 ### Setting user id
 
+The uid (user identifier) drives features like a/b testing and personalization. By default, we generate an uid based on the user's browser/device information. However, for improved data synchronization with your internal records, you can set your own uid. By incorporating your own uid, you enhance data integration and alignment with your systems. This flexibility enables seamless tracking and analysis, maximizing the benefits of our platform within your existing infrastructure.
+
+To set your own UID, use this code:
 ```dart
-tracker.userId = 'MY_UID'
+tracker.userId = 'MY_UID';
 ```
 
 ### Getting tracking data
+You also have the option to retrieve the automatically generated user id and session id. To obtain the user id and session id, you can use the following code:
 
 ```dart
 String uid = tracker.userId;
@@ -108,3 +134,11 @@ const transactions = [
 ];
 tracker.sendEvents('transactions', transactions);
 ```
+
+### Event parameters
+
+For the detailed list of event parameters, please refer to this [doc](https://ref-docs.visenze.com/reference/event-parameters).
+
+## Example
+
+[Example](https://pub.dev/packages/visenze_tracking_sdk/example)
