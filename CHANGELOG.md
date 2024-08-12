@@ -14,6 +14,10 @@
 
 - Update README
 
-## 0.0.5
+## 1.0.0
+
+- Update http and sdk version
+
+## 1.0.1
 
 - Fix evaluating OS version for android devices
