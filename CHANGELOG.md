@@ -13,3 +13,7 @@
 ## 0.0.4
 
 - Update README
+
+## 0.0.5
+
+- Fix evaluating OS version for android devices
