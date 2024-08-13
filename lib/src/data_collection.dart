@@ -67,7 +67,7 @@ class DataCollection {
     return <String, dynamic>{
       'p': 'Mobile',
       'os': 'Android',
-      'osv': build.version.baseOS,
+      'osv': build.version.release,
       'db': build.manufacturer,
       'dm': build.model,
     };
