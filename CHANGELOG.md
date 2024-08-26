@@ -21,3 +21,7 @@
 ## 1.0.1
 
 - Fix evaluating OS version for android devices
+
+## 1.0.2
+
+- Fix SDK version for analytics query
